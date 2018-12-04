@@ -1,18 +1,21 @@
 package laskin;
 
+import java.util.HashMap;
+import java.util.Map;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 
 public class Tapahtumankuuntelija implements EventHandler {
-    private TextField tuloskentta; 
-    private TextField syotekentta; 
-    private Button plus;
-    private Button miinus;
-    private Button nollaa;
-    private Button undo;
-    private Sovelluslogiikka sovellus;
+    private final TextField tuloskentta; 
+    private final TextField syotekentta; 
+    private final Button plus;
+    private final Button miinus;
+    private final Button nollaa;
+    private final Button undo;
+    private final Sovelluslogiikka sovellus;
+    private Map<Button, Komento> komennot;
 
     public Tapahtumankuuntelija(TextField tuloskentta, TextField syotekentta, Button plus, Button miinus, Button nollaa, Button undo) {
         this.tuloskentta = tuloskentta;
@@ -22,10 +25,14 @@ public class Tapahtumankuuntelija implements EventHandler {
         this.nollaa = nollaa;
         this.undo = undo;
         this.sovellus = new Sovelluslogiikka();
+        this.komennot = new HashMap();
+        komennot.put(this.nollaa, new Nollaa(sovellus));
+        
     }
     
     @Override
     public void handle(Event event) {
+        
         int arvo = 0;
  
         try {
@@ -38,7 +45,8 @@ public class Tapahtumankuuntelija implements EventHandler {
         } else if (event.getTarget() == miinus) {
             sovellus.miinus(arvo);
         } else if (event.getTarget() == nollaa) {
-            sovellus.nollaa();
+            komennot.get(event.getTarget()).suorita();
+//            sovellus.nollaa();
         } else {
             System.out.println("undo pressed");
         }
