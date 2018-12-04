@@ -1,5 +1,6 @@
 package laskin;
 
+import komennot.*;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.event.Event;
@@ -27,6 +28,7 @@ public class Tapahtumankuuntelija implements EventHandler {
         this.sovellus = new Sovelluslogiikka();
         this.komennot = new HashMap();
         komennot.put(this.nollaa, new Nollaa(sovellus));
+        komennot.put(this.plus, new Plus(sovellus, syotekentta));
         
     }
     
@@ -41,12 +43,12 @@ public class Tapahtumankuuntelija implements EventHandler {
         }
  
         if (event.getTarget() == plus) {
-            sovellus.plus(arvo);
+            komennot.get(event.getTarget()).suorita();
+//            sovellus.plus(arvo);
         } else if (event.getTarget() == miinus) {
             sovellus.miinus(arvo);
         } else if (event.getTarget() == nollaa) {
             komennot.get(event.getTarget()).suorita();
-//            sovellus.nollaa();
         } else {
             System.out.println("undo pressed");
         }

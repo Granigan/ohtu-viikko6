@@ -1,4 +1,7 @@
-package laskin;
+package komennot;
+
+import laskin.Komento;
+import laskin.Sovelluslogiikka;
 
 public class Nollaa implements Komento {
     private Sovelluslogiikka sovellus;
