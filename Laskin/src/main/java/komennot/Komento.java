@@ -1,4 +1,4 @@
-package laskin;
+package komennot;
 
 public interface Komento {
 

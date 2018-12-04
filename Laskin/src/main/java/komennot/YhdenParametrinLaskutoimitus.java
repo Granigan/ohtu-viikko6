@@ -4,32 +4,30 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import laskin.Sovelluslogiikka;
 
-public class Miinus implements Komento {
-    private final Sovelluslogiikka sovellus;
-    private final TextField syotekentta;
+public abstract class YhdenParametrinLaskutoimitus implements Komento {
+
+    protected final Sovelluslogiikka sovellus;
+    protected final TextField syotekentta;
     private final TextField tuloskentta;
     private final Button nollaa;
     private final Button undo;
 
     private String previousResult;
 
-    
-    public Miinus(Sovelluslogiikka sovellus, TextField syotekentta, TextField tuloskentta, Button nollaa, Button undo) {
+    public YhdenParametrinLaskutoimitus(Sovelluslogiikka sovellus, TextField syotekentta, TextField tuloskentta, Button nollaa, Button undo) {
         this.sovellus = sovellus;
         this.syotekentta = syotekentta;
         this.tuloskentta = tuloskentta;
         this.nollaa = nollaa;
         this.undo = undo;
     }
-    
-    @Override
-    public void suorita() {
-        previousResult = tuloskentta.getText();
-        sovellus.miinus(Integer.parseInt(syotekentta.getText()));
+
+    public void yleinenSuoritus() {
         undo.disableProperty().set(false);
         syotekentta.setText("");
         tuloskentta.setText("" + sovellus.tulos());
-        setNollaState();
+        asetaNollaaTila();
+
     }
 
     @Override
@@ -39,13 +37,17 @@ public class Miinus implements Komento {
         syotekentta.setText("");
     }
 
-        private void setNollaState() {
+    private void asetaNollaaTila() {
         if (sovellus.tulos() == 0) {
             nollaa.disableProperty().set(true);
         } else {
             nollaa.disableProperty().set(false);
         }
 
+    }
+
+    protected void tallennaTulos() {
+        previousResult = tuloskentta.getText();
     }
 
 }

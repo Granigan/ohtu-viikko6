@@ -1,33 +1,20 @@
 package komennot;
 
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import laskin.Komento;
 import laskin.Sovelluslogiikka;
 
-public class Plus implements Komento {
+public class Plus extends YhdenParametrinLaskutoimitus {
 
-    private final Sovelluslogiikka sovellus;
-    private final TextField syotekentta;
-    private final TextField tuloskentta;
-    private String previousResult;
-
-    public Plus(Sovelluslogiikka sovellus, TextField syotekentta, TextField tuloskentta) {
-        this.sovellus = sovellus;
-        this.syotekentta = syotekentta;
-        this.tuloskentta = tuloskentta;
+    public Plus(Sovelluslogiikka sovellus, TextField syotekentta, TextField tuloskentta, Button nollaa, Button undo) {
+        super(sovellus, syotekentta, tuloskentta, nollaa, undo);
     }
 
     @Override
     public void suorita() {
-        previousResult = tuloskentta.getText();
-        sovellus.plus(Integer.parseInt(syotekentta.getText()));
-    }
-
-    @Override
-    public void peru() {
-        sovellus.setTulos(Integer.parseInt(previousResult));
-        tuloskentta.setText("" + previousResult);
-        syotekentta.setText("");
+        super.tallennaTulos();
+        super.sovellus.plus(Integer.parseInt(super.syotekentta.getText()));
+        super.yleinenSuoritus();
     }
 
 }

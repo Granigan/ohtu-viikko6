@@ -1,5 +1,6 @@
 package laskin;
 
+import komennot.Komento;
 import komennot.*;
 import java.util.HashMap;
 import java.util.Map;
@@ -26,9 +27,9 @@ public class Tapahtumankuuntelija implements EventHandler {
         this.sovellus = new Sovelluslogiikka();
         this.komennot = new HashMap();
         edellinen = null;
-        komennot.put(nollaa, new Nollaa(sovellus, syotekentta, tuloskentta));
-        komennot.put(plus, new Plus(sovellus, syotekentta, tuloskentta));
-        komennot.put(miinus, new Miinus(sovellus, syotekentta, tuloskentta));
+        komennot.put(nollaa, new Nollaa(sovellus, syotekentta, tuloskentta, nollaa, undo));
+        komennot.put(plus, new Plus(sovellus, syotekentta, tuloskentta, nollaa, undo));
+        komennot.put(miinus, new Miinus(sovellus, syotekentta, tuloskentta, nollaa, undo));
 
     }
 
@@ -38,18 +39,6 @@ public class Tapahtumankuuntelija implements EventHandler {
         if (valittuNappi != undo) {
             komennot.get(valittuNappi).suorita();
             edellinen = komennot.get(valittuNappi);
-            undo.disableProperty().set(false);
-            
-            syotekentta.setText("");
-            tuloskentta.setText("" + sovellus.tulos());
-
-            if (sovellus.tulos() == 0) {
-                nollaa.disableProperty().set(true);
-            } else {
-                nollaa.disableProperty().set(false);
-            }
-            
-
         } else {
             edellinen.peru();
             undo.disableProperty().set(true);
