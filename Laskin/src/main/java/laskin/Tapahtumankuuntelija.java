@@ -11,18 +11,12 @@ import javafx.scene.control.TextField;
 
 public class Tapahtumankuuntelija implements EventHandler {
 
-    private final TextField tuloskentta;
-    private final TextField syotekentta;
-    private final Button nollaa;
     private final Button undo;
     private final Sovelluslogiikka sovellus;
     private final Map<Button, Komento> komennot;
     private Komento edellinen;
 
     public Tapahtumankuuntelija(TextField tuloskentta, TextField syotekentta, Button plus, Button miinus, Button nollaa, Button undo) {
-        this.tuloskentta = tuloskentta;
-        this.syotekentta = syotekentta;
-        this.nollaa = nollaa;
         this.undo = undo;
         this.sovellus = new Sovelluslogiikka();
         this.komennot = new HashMap();

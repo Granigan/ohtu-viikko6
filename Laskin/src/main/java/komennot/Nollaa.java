@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import laskin.Sovelluslogiikka;
 
-public class Nollaa extends YhdenParametrinLaskutoimitus {
+public class Nollaa extends Operaatio {
 
     public Nollaa(Sovelluslogiikka sovellus, TextField syotekentta, TextField tuloskentta, Button nollaa, Button undo) {
         super(sovellus, syotekentta, tuloskentta, nollaa, undo);

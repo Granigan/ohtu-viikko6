@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import laskin.Sovelluslogiikka;
 
-public abstract class YhdenParametrinLaskutoimitus implements Komento {
+public abstract class Operaatio implements Komento {
 
     protected final Sovelluslogiikka sovellus;
     protected final TextField syotekentta;
@@ -14,7 +14,7 @@ public abstract class YhdenParametrinLaskutoimitus implements Komento {
 
     private String previousResult;
 
-    public YhdenParametrinLaskutoimitus(Sovelluslogiikka sovellus, TextField syotekentta, TextField tuloskentta, Button nollaa, Button undo) {
+    public Operaatio(Sovelluslogiikka sovellus, TextField syotekentta, TextField tuloskentta, Button nollaa, Button undo) {
         this.sovellus = sovellus;
         this.syotekentta = syotekentta;
         this.tuloskentta = tuloskentta;

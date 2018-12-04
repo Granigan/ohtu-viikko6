@@ -4,7 +4,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import laskin.Sovelluslogiikka;
 
-public class Miinus extends YhdenParametrinLaskutoimitus {
+public class Miinus extends Operaatio {
 
     public Miinus(Sovelluslogiikka sovellus, TextField syotekentta, TextField tuloskentta, Button nollaa, Button undo) {
         super(sovellus, syotekentta, tuloskentta, nollaa, undo);
