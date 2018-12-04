@@ -29,6 +29,7 @@ public class Tapahtumankuuntelija implements EventHandler {
         this.komennot = new HashMap();
         komennot.put(this.nollaa, new Nollaa(sovellus));
         komennot.put(this.plus, new Plus(sovellus, syotekentta));
+        komennot.put(this.miinus, new Miinus(sovellus, syotekentta));
         
     }
     
@@ -44,9 +45,9 @@ public class Tapahtumankuuntelija implements EventHandler {
  
         if (event.getTarget() == plus) {
             komennot.get(event.getTarget()).suorita();
-//            sovellus.plus(arvo);
         } else if (event.getTarget() == miinus) {
-            sovellus.miinus(arvo);
+//            sovellus.miinus(arvo);
+            komennot.get(event.getTarget()).suorita();
         } else if (event.getTarget() == nollaa) {
             komennot.get(event.getTarget()).suorita();
         } else {
