@@ -1,10 +1,9 @@
-
 package statistics.matcher;
 
 import statistics.Player;
 
 public class PlaysIn implements Matcher {
-    private String team;
+    private final String team;
 
     public PlaysIn(String team) {
         this.team = team;
