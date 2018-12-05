@@ -1,6 +1,7 @@
-package statistics.matcher;
+package statistics.matcher.logic;
 
 import statistics.Player;
+import statistics.matcher.Matcher;
 
 public class Or extends BooleanLogic {
 

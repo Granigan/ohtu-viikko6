@@ -1,7 +1,8 @@
-package statistics.matcher;
+package statistics.matcher.condition;
 
 import java.lang.reflect.Method;
 import statistics.Player;
+import statistics.matcher.Matcher;
 
 public abstract class Condition implements Matcher {
 

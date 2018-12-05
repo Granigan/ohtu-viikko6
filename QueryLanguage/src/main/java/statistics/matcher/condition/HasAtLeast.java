@@ -1,4 +1,4 @@
-package statistics.matcher;
+package statistics.matcher.condition;
 
 import statistics.Player;
 

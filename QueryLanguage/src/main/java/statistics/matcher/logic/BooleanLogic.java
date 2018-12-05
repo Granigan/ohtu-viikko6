@@ -1,6 +1,7 @@
-package statistics.matcher;
+package statistics.matcher.logic;
 
 import statistics.Player;
+import statistics.matcher.Matcher;
 
 public class BooleanLogic implements Matcher{
     protected final Matcher[] matchers;
