@@ -2,16 +2,16 @@ package statistics.matcher;
 
 import statistics.Player;
 
-public class And extends BooleanLogic{
+public class Not extends BooleanLogic{
 
-    public And(Matcher... matchers) {
+    public Not(Matcher... matchers) {
         super(matchers);
     }
 
     @Override
     public boolean matches(Player p) {
-        for (Matcher matcher : super.matchers) {
-            if (!matcher.matches(p)) {
+        for (Matcher m : super.matchers) {
+            if (m.matches(p)) {
                 return false;
             }
         }
